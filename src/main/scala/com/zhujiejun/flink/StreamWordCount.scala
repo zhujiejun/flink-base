@@ -12,8 +12,7 @@ object StreamWordCount {
             .map((_, 1))
             .keyBy(0)
             .sum(1)
-        wordCountDataStream.print()
-
+        wordCountDataStream.print("|").setParallelism(2)
         env.execute("stream word count job")
     }
 }
