@@ -12,23 +12,52 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
 }
+
+apply plugin: 'com.github.johnrengelman.shadow'
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    maven { url "https://maven.aliyun.com/repository/central" }
+    maven { url "https://maven.aliyun.com/repository/jcenter" }
+    maven { url "https://maven.aliyun.com/repository/spring" }
+    maven { url "https://maven.aliyun.com/repository/google" }
+    maven { url "https://maven.aliyun.com/repository/public" }
+    maven { url "https://maven.aliyun.com/repository/releases" }
+    maven { url "https://maven.aliyun.com/repository/spring-plugin" }
+    maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
 }
 
 dependencies {
     // Use Scala 2.13 in our library project
-    implementation 'org.scala-lang:scala-library:2.13.1'
+    implementation 'org.scala-lang:scala-library:2.12.12'
 
     // Use Scalatest for testing our library
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.scalatest:scalatest_2.13:3.1.0'
-    testImplementation 'org.scalatestplus:junit-4-12_2.13:3.1.0.0'
+    testImplementation 'org.scalatest:scalatest_2.12:3.1.0'
+    testImplementation 'org.scalatestplus:junit-4-12_2.12:3.1.0.0'
 
     // Need scala-xml at test runtime
-    testRuntimeOnly 'org.scala-lang.modules:scala-xml_2.13:1.2.0'
+    testRuntimeOnly 'org.scala-lang.modules:scala-xml_2.12:1.2.0'
+
+    compile group: 'org.apache.flink', name: 'flink-scala_2.12', version: '1.10.1'
+    compile group: 'org.apache.flink', name: 'flink-streaming-scala_2.12', version: '1.10.1'
 }
+
+
+//mainClassName = 'com.zhujiejun.flink.StreamWordCount'
+
+/*shadowJar {
+    zip64 true
+    archiveBaseName = 'flink-base'
+    archiveVersion = null
+    archiveClassifier = null
+    *//*manifest {
+        attributes "Main-Class": mainClassName
+    }*//*
+    configurations = [project.configurations.compileClasspath]
+}*/
