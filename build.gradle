@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    // Use Scala 2.13 in our library project
+    // Use Scala 2.12 in our library project
     implementation 'org.scala-lang:scala-library:2.12.12'
 
     // Use Scalatest for testing our library
@@ -47,8 +47,6 @@ dependencies {
     compile group: 'org.apache.flink', name: 'flink-scala_2.12', version: '1.10.1'
     compile group: 'org.apache.flink', name: 'flink-streaming-scala_2.12', version: '1.10.1'
 }
-
-//mainClassName = 'com.zhujiejun.flink.StreamWordCount'
 
 shadowJar {
     setZip64(true)
