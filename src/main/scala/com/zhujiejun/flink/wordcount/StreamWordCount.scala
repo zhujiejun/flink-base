@@ -1,4 +1,4 @@
-package com.zhujiejun.flink
+package com.zhujiejun.flink.wordcount
 
 import org.apache.flink.api.java.utils.ParameterTool
 import org.apache.flink.streaming.api.scala._
