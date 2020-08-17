@@ -40,6 +40,6 @@ object FlinkSource {
         val stream3 = env.addSource(new FlinkKafkaConsumer[String]("sensor", new SimpleStringSchema(), properties))
         stream3.print("stream3").setParallelism(1)
 
-        env.execute("Flink Source")
+        env.execute("flink source")
     }
 }
