@@ -48,6 +48,7 @@ dependencies {
     compile group: 'org.apache.flink', name: 'flink-scala_2.12', version: '1.10.1'
     compile group: 'org.apache.flink', name: 'flink-streaming-scala_2.12', version: '1.10.1'
     compile group: 'org.apache.flink', name: 'flink-connector-kafka_2.12', version: '1.10.1'
+    compile group: 'org.apache.bahir', name: 'flink-connector-redis_2.11', version: '1.0'
 }
 
 shadowJar {
