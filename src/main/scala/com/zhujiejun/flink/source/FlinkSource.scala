@@ -9,10 +9,9 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer
 case class SensorReding(id: String, timestamp: Long, temperature: Double)
 
 object FlinkSource {
-
     def main(args: Array[String]): Unit = {
         val env = StreamExecutionEnvironment.getExecutionEnvironment
-
+        env.setParallelism(1)
         //1.Collection
         /*val stream1 = env.fromCollection(List(
             SensorReding("semsor_1", 1547718191, 35.47241),
@@ -36,9 +35,8 @@ object FlinkSource {
         properties.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
         properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
         properties.setProperty("auto.offset.reset", "latest")
-
         val stream3 = env.addSource(new FlinkKafkaConsumer[String]("sensor", new SimpleStringSchema(), properties))
-        stream3.print("stream3").setParallelism(1)
+        stream3.print("flink source")
 
         env.execute("flink source")
     }
