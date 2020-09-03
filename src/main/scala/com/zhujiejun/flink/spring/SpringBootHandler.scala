@@ -22,8 +22,8 @@ object SpringBootHandler {
 
         val sinkStream = sourceStream.map {
             data => {
-                val dataArray = data.split(",")
-                dataArray(0).trim.concat("-").concat(dataArray(1).trim).trim
+                val dataArray = data.split("-")
+                dataArray(0).trim.concat("------").concat(dataArray(1).trim).trim
             }
         }
 
